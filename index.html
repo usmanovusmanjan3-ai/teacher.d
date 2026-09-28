@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VELORA — Teacher Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginPage" class="login-page">
+
+    <div class="login-decoration decoration-1"></div>
+    <div class="login-decoration decoration-2"></div>
+
+    <div class="login-box">
+
+        <div class="login-logo">V</div>
+
+        <h1>VELORA</h1>
+        <p class="login-title">TEACHER DASHBOARD</p>
+
+        <h2>O‘qituvchi kirishi</h2>
+        <p class="login-description">
+            O‘qituvchi loginini va maxsus kodini kiriting.
+        </p>
+
+        <label>O‘qituvchi</label>
+
+        <select id="teacherSelect">
+            <option value="">O‘qituvchini tanlang</option>
+            <option value="akramjonova">Akramjonova Jadra — Tarix</option>
+            <option value="egamberdiyev">Egamberdiyev Bakhodir — IT</option>
+            <option value="valiyev">Valiyev Jamshid — English</option>
+            <option value="karimova">Karimova Dilnoza — Turk tili</option>
+            <option value="abdullayev">Abdullayev Sardor — Arab tili</option>
+        </select>
+
+        <label>Kirish kodi</label>
+
+        <input
+            type="password"
+            id="teacherCode"
+            placeholder="Kodni kiriting"
+        >
+
+        <button id="loginBtn" class="gold-btn login-button">
+            Tizimga kirish →
+        </button>
+
+        <div id="loginError" class="login-error"></div>
+
+        <div class="login-info">
+            <span>Demo tizim</span>
+            <small>5 ta o‘qituvchi • 100 ta o‘quvchi</small>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- APP -->
+<div id="app" class="app hidden">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+            <div class="logo-small">V</div>
+
+            <div>
+                <h2>VELORA</h2>
+                <span>Teacher Panel</span>
+            </div>
+        </div>
+
+
+        <div class="teacher-profile">
+
+            <div id="teacherAvatar" class="teacher-avatar">
+                AJ
+            </div>
+
+            <div>
+                <strong id="teacherName">
+                    Akramjonova Jadra
+                </strong>
+
+                <span id="teacherSubject">
+                    Tarix
+                </span>
+            </div>
+
+            <i></i>
+
+        </div>
+
+
+        <nav>
+
+            <p class="menu-title">ASOSIY</p>
+
+            <button class="nav-item active" data-page="dashboard">
+                <b>⌂</b>
+                Bosh sahifa
+            </button>
+
+            <button class="nav-item" data-page="students">
+                <b>♙</b>
+                O‘quvchilar
+                <span id="studentMenuCount">20</span>
+            </button>
+
+            <button class="nav-item" data-page="assignments">
+                <b>✓</b>
+                Topshiriqlar
+            </button>
+
+            <button class="nav-item" data-page="results">
+                <b>▥</b>
+                Natijalar
+            </button>
+
+            <p class="menu-title">BOSHQARUV</p>
+
+            <button class="nav-item" data-page="schedule">
+                <b>◷</b>
+                Dars jadvali
+            </button>
+
+            <button class="nav-item" data-page="attendance">
+                <b>✓</b>
+                Davomat
+            </button>
+
+            <button class="nav-item" data-page="certificates">
+                <b>♜</b>
+                Sertifikatlar
+            </button>
+
+            <p class="menu-title">TIZIM</p>
+
+            <button class="nav-item" data-page="profile">
+                <b>◉</b>
+                Profil
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="support">
+                <div>?</div>
+                <span>
+                    <strong>Yordam</strong>
+                    Texnik yordam
+                </span>
+            </div>
+
+            <button id="logoutBtn" class="logout">
+                ↪ Chiqish
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <header class="header">
+
+            <button id="menuButton" class="mobile-menu">
+                ☰
+            </button>
+
+            <div>
+                <h1 id="pageTitle">Bosh sahifa</h1>
+                <p id="pageDescription">
+                    Ta’lim jarayonini boshqaring.
+                </p>
+            </div>
+
+
+            <div class="header-right">
+
+                <button class="notification">
+                    ♢
+                    <i></i>
+                </button>
+
+                <div class="header-user">
+
+                    <div id="headerAvatar">
+                        AJ
+                    </div>
+
+                    <section>
+                        <strong id="headerTeacher">
+                            Akramjonova Jadra
+                        </strong>
+
+                        <small id="headerSubject">
+                            Tarix o‘qituvchisi
+                        </small>
+                    </section>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <div class="content">
+
+
+            <!-- DASHBOARD -->
+            <section id="dashboardPage" class="page active">
+
+                <div class="welcome">
+
+                    <div>
+                        <small id="welcomeSubject">
+                            TARIX O‘QITUVCHISI
+                        </small>
+
+                        <h2>
+                            Assalomu alaykum,
+                            <span id="welcomeTeacher">
+                                Jadra
+                            </span>! 👋
+                        </h2>
+
+                        <p>
+                            Bugungi ta’lim jarayonini
+                            boshqarishga tayyormisiz?
+                        </p>
+                    </div>
+
+                    <button
+                        class="gold-btn"
+                        onclick="openModal('assignmentModal')"
+                    >
+                        + Topshiriq yaratish
+                    </button>
+
+                </div>
+
+
+                <!-- STATS -->
+                <div class="stats">
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon gold">♙</div>
+
+                        <div>
+                            <span>O‘quvchilar</span>
+                            <strong id="studentStat">20</strong>
+                            <small>faol o‘quvchi</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon blue">✓</div>
+
+                        <div>
+                            <span>Topshiriqlar</span>
+                            <strong id="assignmentStat">8</strong>
+                            <small>jami berilgan</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon green">%</div>
+
+                        <div>
+                            <span>O‘rtacha natija</span>
+                            <strong id="averageStat">86%</strong>
+                            <small class="green-text">
+                                ↑ 4.2%
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon purple">◷</div>
+
+                        <div>
+                            <span>Bugungi dars</span>
+                            <strong>3</strong>
+                            <small>1 tasi jonli</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DASHBOARD BODY -->
+                <div class="dashboard-columns">
+
+
+                    <!-- ACTIVITY -->
+                    <div class="panel activity-panel">
+
+                        <div class="panel-heading">
+
+                            <div>
+                                <h3>O‘quvchilar faolligi</h3>
+                                <p>So‘nggi 7 kun</p>
+                            </div>
+
+                            <select>
+                                <option>7 kun</option>
+                                <option>30 kun</option>
+                            </select>
+
+                        </div>
+
+
+                        <div class="fake-chart">
+
+                            <div class="chart-labels">
+                                <span>100%</span>
+                                <span>75%</span>
+                                <span>50%</span>
+                                <span>25%</span>
+                                <span>0%</span>
+                            </div>
+
+                            <div class="chart-body">
+
+                                <div class="chart-grid g1"></div>
+                                <div class="chart-grid g2"></div>
+                                <div class="chart-grid g3"></div>
+                                <div class="chart-grid g4"></div>
+
+                                <svg viewBox="0 0 700 250">
+
+                                    <path
+                                        class="area"
+                                        d="
+                                        M0 190
+                                        C70 160, 90 170, 140 145
+                                        C200 115, 230 155, 290 120
+                                        C350 85, 370 125, 430 100
+                                        C490 75, 520 105, 570 70
+                                        C620 40, 660 75, 700 45
+                                        L700 250
+                                        L0 250 Z
+                                        "
+                                    />
+
+                                    <path
+                                        class="line"
+                                        d="
+                                        M0 190
+                                        C70 160, 90 170, 140 145
+                                        C200 115, 230 155, 290 120
+                                        C350 85, 370 125, 430 100
+                                        C490 75, 520 105, 570 70
+                                        C620 40, 660 75, 700 45
+                                        "
+                                    />
+
+                                </svg>
+
+                                <div class="chart-days">
+                                    <span>Dush</span>
+                                    <span>Sesh</span>
+                                    <span>Chor</span>
+                                    <span>Pay</span>
+                                    <span>Jum</span>
+                                    <span>Shan</span>
+                                    <span>Yak</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- LESSONS -->
+                    <div class="panel">
+
+                        <div class="panel-heading">
+
+                            <div>
+                                <h3>Bugungi darslar</h3>
+                                <p id="todayDate"></p>
+                            </div>
+
+                            <button
+                                class="link-btn"
+                                onclick="navigateTo('schedule')"
+                            >
+                                Barchasi →
+                            </button>
+
+                        </div>
+
+
+                        <div class="lesson-list">
+
+                            <div class="lesson">
+
+                                <div class="time">
+                                    <strong>09:00</strong>
+                                    <small>60 min</small>
+                                </div>
+
+                                <div class="lesson-info">
+                                    <strong id="lessonSubject">
+                                        Tarix
+                                    </strong>
+
+                                    <span>
+                                        2-kurs • A guruh
+                                    </span>
+                                </div>
+
+                                <em class="live">
+                                    Jonli
+                                </em>
+
+                            </div>
+
+
+                            <div class="lesson">
+
+                                <div class="time">
+                                    <strong>11:00</strong>
+                                    <small>60 min</small>
+                                </div>
+
+                                <div class="lesson-info">
+                                    <strong id="lessonSubject2">
+                                        Tarix
+                                    </strong>
+
+                                    <span>
+                                        2-kurs • A guruh
+                                    </span>
+                                </div>
+
+                                <em>
+                                    11:00
+                                </em>
+
+                            </div>
+
+
+                            <div class="lesson">
+
+                                <div class="time">
+                                    <strong>14:00</strong>
+                                    <small>60 min</small>
+                                </div>
+
+                                <div class="lesson-info">
+                                    <strong id="lessonSubject3">
+                                        Tarix
+                                    </strong>
+
+                                    <span>
+                                        1-kurs • B guruh
+                                    </span>
+                                </div>
+
+                                <em>
+                                    14:00
+                                </em>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STUDENTS -->
+                <div class="panel recent-panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+                            <h3>
+                                Mening o‘quvchilarim
+                            </h3>
+
+                            <p>
+                                Sizning faningizdagi o‘quvchilar
+                            </p>
+                        </div>
+
+                        <button
+                            class="link-btn"
+                            onclick="navigateTo('students')"
+                        >
+                            Barchasi →
+                        </button>
+
+                    </div>
+
+                    <div
+                        id="recentStudents"
+                        class="recent-students"
+                    ></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- STUDENTS -->
+            <section id="studentsPage" class="page">
+
+                <div class="section-top">
+
+                    <div>
+                        <h2>O‘quvchilar</h2>
+
+                        <p>
+                            <span id="studentsPageSubject">
+                                Tarix
+                            </span>
+                            fanidagi barcha o‘quvchilar.
+                        </p>
+                    </div>
+
+                    <button
+                        class="gold-btn"
+                        onclick="openModal('studentModal')"
+                    >
+                        + O‘quvchi qo‘shish
+                    </button>
+
+                </div>
+
+
+                <div class="student-summary">
+
+                    <div>
+                        <span>Jami</span>
+                        <strong id="totalStudents">20</strong>
+                    </div>
+
+                    <div>
+                        <span>Faol</span>
+                        <strong>18</strong>
+                    </div>
+
+                    <div>
+                        <span>O‘rtacha ball</span>
+                        <strong>86%</strong>
+                    </div>
+
+                    <div>
+                        <span>Davomat</span>
+                        <strong>91%</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="filter">
+
+                    <input
+                        id="studentSearch"
+                        type="text"
+                        placeholder="🔍 O‘quvchi qidirish..."
+                    >
+
+                    <select id="groupFilter">
+                        <option value="all">
+                            Barcha guruhlar
+                        </option>
+                        <option value="1-kurs A">1-kurs A</option>
+                        <option value="1-kurs B">1-kurs B</option>
+                        <option value="2-kurs A">2-kurs A</option>
+                        <option value="2-kurs B">2-kurs B</option>
+                    </select>
+
+                </div>
+
+
+                <div class="panel table-panel">
+
+                    <div class="student-table">
+
+                        <div class="student-row header-row">
+                            <span>#</span>
+                            <span>O‘quvchi</span>
+                            <span>Guruh</span>
+                            <span>Natija</span>
+                            <span>Davomat</span>
+                            <span>Holat</span>
+                        </div>
+
+                        <div id="studentsTable"></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ASSIGNMENTS -->
+            <section id="assignmentsPage" class="page">
+
+                <div class="section-top">
+
+                    <div>
+                        <h2>Topshiriqlar</h2>
+
+                        <p>
+                            <span id="assignmentSubject">
+                                Tarix
+                            </span>
+                            faniga berilgan topshiriqlar.
+                        </p>
+                    </div>
+
+                    <button
+                        class="gold-btn"
+                        onclick="openModal('assignmentModal')"
+                    >
+                        + Topshiriq yaratish
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="assignmentList"
+                    class="assignment-grid"
+                ></div>
+
+            </section>
+
+
+            <!-- RESULTS -->
+            <section id="resultsPage" class="page">
+
+                <div class="section-top">
+
+                    <div>
+                        <h2>Natijalar</h2>
+
+                        <p>
+                            O‘quvchilarning o‘zlashtirish
+                            ko‘rsatkichlari.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="result-cards">
+
+                    <div class="result-box">
+                        <span>O‘rtacha</span>
+                        <strong id="resultAverage">86%</strong>
+                    </div>
+
+                    <div class="result-box">
+                        <span>Eng yuqori</span>
+                        <strong>98%</strong>
+                    </div>
+
+                    <div class="result-box">
+                        <span>Eng past</span>
+                        <strong>68%</strong>
+                    </div>
+
+                    <div class="result-box">
+                        <span>O‘tish darajasi</span>
+                        <strong>95%</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="panel table-panel">
+
+                    <div
+                        id="resultsTable"
+                        class="results-table"
+                    ></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- SCHEDULE -->
+            <section id="schedulePage" class="page">
+
+                <div class="section-top">
+
+                    <div>
+                        <h2>Dars jadvali</h2>
+                        <p>Haftalik darslaringiz.</p>
+                    </div>
+
+                    <button
+                        class="gold-btn"
+                        onclick="openModal('lessonModal')"
+                    >
+                        + Dars qo‘shish
+                    </button>
+
+                </div>
+
+
+                <div class="week-grid">
+
+                    <div class="day">
+                        <h3>Dushanba</h3>
+
+                        <div class="class-card">
+                            <b>09:00</b>
+                            <strong id="scheduleSubject1">
+                                Tarix
+                            </strong>
+                            <small>2-kurs A • 20 o‘quvchi</small>
+                        </div>
+
+                        <div class="class-card">
+                            <b>14:00</b>
+                            <strong id="scheduleSubject2">
+                                Tarix
+                            </strong>
+                            <small>1-kurs B • 20 o‘quvchi</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="day">
+                        <h3>Seshanba</h3>
+
+                        <div class="class-card">
+                            <b>10:00</b>
+                            <strong id="scheduleSubject3">
+                                Tarix
+                            </strong>
+                            <small>2-kurs B • 20 o‘quvchi</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="day">
+                        <h3>Chorshanba</h3>
+
+                        <div class="class-card">
+                            <b>09:00</b>
+                            <strong id="scheduleSubject4">
+                                Tarix
+                            </strong>
+                            <small>1-kurs A • 20 o‘quvchi</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="day">
+                        <h3>Payshanba</h3>
+
+                        <div class="class-card">
+                            <b>11:00</b>
+                            <strong id="scheduleSubject5">
+                                Tarix
+                            </strong>
+                            <small>2-kurs A • 20 o‘quvchi</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="day">
+                        <h3>Juma</h3>
+
+                        <div class="class-card">
+                            <b>09:00</b>
+                            <strong id="scheduleSubject6">
+                                Tarix
+                            </strong>
+                            <small>1-kurs B • 20 o‘quvchi</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ATTENDANCE -->
+            <section id="attendancePage" class="page">
+
+                <div class="section-top">
+
+                    <div>
+                        <h2>Davomat</h2>
+                        <p>O‘quvchilar davomatini boshqaring.</p>
+                    </div>
+
+                    <input
+                        type="date"
+                        id="attendanceDate"
+                        class="date-input"
+                    >
+
+                </div>
+
+
+                <div class="attendance-cards">
+
+                    <div>
+                        <span>Kelgan</span>
+                        <strong>18</strong>
+                    </div>
+
+                    <div>
+                        <span>Kechikkan</span>
+                        <strong>1</strong>
+                    </div>
+
+                    <div>
+                        <span>Kelmagan</span>
+                        <strong>1</strong>
+                    </div>
+
+                    <div>
+                        <span>Davomat</span>
+                        <strong>90%</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div
+                        id="attendanceTable"
+                        class="attendance-table"
+                    ></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- CERTIFICATES -->
+            <section id="certificatesPage" class="page">
+
+                <div class="section-top">
+
+                    <div>
+                        <h2>Sertifikatlar</h2>
+                        <p>
+                            O‘quvchilar uchun sertifikat yarating.
+                        </p>
+                    </div>
+
+                    <button
+                        class="gold-btn"
+                        onclick="openModal('certificateModal')"
+                    >
+                        + Sertifikat yaratish
+                    </button>
+
+                </div>
+
+
+                <div class="certificate-wrapper">
+
+                    <div class="certificate">
+
+                        <small>VELORA EDUCATION</small>
+
+                        <h1>SERTIFIKAT</h1>
+
+                        <p>Ushbu sertifikat</p>
+
+                        <h2 id="certificateStudentName">
+                            O‘quvchi ismi
+                        </h2>
+
+                        <p>
+                            <span id="certificateSubject">
+                                Tarix
+                            </span>
+                            kursini muvaffaqiyatli
+                            tamomlagani uchun berildi.
+                        </p>
+
+                        <div class="certificate-line"></div>
+
+                        <div class="certificate-footer">
+                            <span>O‘qituvchi</span>
+                            <b>VELORA</b>
+                            <span>2026</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- PROFILE -->
+            <section id="profilePage" class="page">
+
+                <div class="section-top">
+
+                    <div>
+                        <h2>O‘qituvchi profili</h2>
+                        <p>Shaxsiy ma’lumotlaringiz.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="profile-card">
+
+                    <div
+                        id="profileAvatar"
+                        class="profile-avatar"
+                    >
+                        AJ
+                    </div>
+
+                    <h2 id="profileName">
+                        Akramjonova Jadra
+                    </h2>
+
+                    <p id="profileSubject">
+                        Tarix o‘qituvchisi
+                    </p>
+
+                    <div class="profile-info">
+
+                        <div>
+                            <span>Fan</span>
+                            <strong id="profileSubject2">
+                                Tarix
+                            </strong>
+                        </div>
+
+                        <div>
+                            <span>O‘quvchilar</span>
+                            <strong id="profileStudents">
+                                20
+                            </strong>
+                        </div>
+
+                        <div>
+                            <span>Holat</span>
+                            <strong class="green-text">
+                                Faol
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- STUDENT MODAL -->
+<div id="studentModal" class="modal">
+
+    <div class="modal-box">
+
+        <button
+            class="close-modal"
+            onclick="closeModal('studentModal')"
+        >
+            ×
+        </button>
+
+        <h2>O‘quvchi qo‘shish</h2>
+
+        <p>Yangi o‘quvchini guruhga qo‘shing.</p>
+
+        <label>Ism-familiya</label>
+
+        <input
+            id="newStudentName"
+            placeholder="Masalan: Ali Valiyev"
+        >
+
+        <label>Guruh</label>
+
+        <select id="newStudentGroup">
+            <option>1-kurs A</option>
+            <option>1-kurs B</option>
+            <option>2-kurs A</option>
+            <option>2-kurs B</option>
+        </select>
+
+        <button
+            class="gold-btn full"
+            onclick="addStudent()"
+        >
+            O‘quvchini qo‘shish
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ASSIGNMENT MODAL -->
+<div id="assignmentModal" class="modal">
+
+    <div class="modal-box">
+
+        <button
+            class="close-modal"
+            onclick="closeModal('assignmentModal')"
+        >
+            ×
+        </button>
+
+        <h2>Topshiriq yaratish</h2>
+
+        <p>
+            O‘quvchilarga yangi topshiriq bering.
+        </p>
+
+        <label>Topshiriq nomi</label>
+
+        <input
+            id="newAssignmentName"
+            placeholder="Masalan: 10 ta test savoli"
+        >
+
+        <label>Deadline</label>
+
+        <input
+            type="date"
+            id="newAssignmentDate"
+        >
+
+        <button
+            class="gold-btn full"
+            onclick="addAssignment()"
+        >
+            Topshiriq yaratish
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- LESSON MODAL -->
+<div id="lessonModal" class="modal">
+
+    <div class="modal-box">
+
+        <button
+            class="close-modal"
+            onclick="closeModal('lessonModal')"
+        >
+            ×
+        </button>
+
+        <h2>Dars qo‘shish</h2>
+
+        <label>Sana</label>
+
+        <input type="date">
+
+        <label>Vaqt</label>
+
+        <input type="time">
+
+        <label>Guruh</label>
+
+        <select>
+            <option>1-kurs A</option>
+            <option>1-kurs B</option>
+            <option>2-kurs A</option>
+            <option>2-kurs B</option>
+        </select>
+
+        <button
+            class="gold-btn full"
+            onclick="saveLesson()"
+        >
+            Darsni saqlash
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- CERTIFICATE MODAL -->
+<div id="certificateModal" class="modal">
+
+    <div class="modal-box">
+
+        <button
+            class="close-modal"
+            onclick="closeModal('certificateModal')"
+        >
+            ×
+        </button>
+
+        <h2>Sertifikat yaratish</h2>
+
+        <label>O‘quvchi</label>
+
+        <select id="certificateSelect"></select>
+
+        <button
+            class="gold-btn full"
+            onclick="createCertificate()"
+        >
+            Sertifikat yaratish
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+<div id="toast" class="toast">
+    ✓
+    <span id="toastText">
+        Amal bajarildi
+    </span>
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
